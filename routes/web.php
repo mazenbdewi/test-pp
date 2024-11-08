@@ -13,3 +13,16 @@ Route::get('/', function () {
 
 
 Route::resource('students', StudentController::class);
+
+
+
+//Routes for School Controller
+Route::get('schools',[SchoolController::class,'index']);
+
+
+Route::get('/school/create',[SchoolController::class,'create']);
+Route::post('/school',[SchoolController::class,'store']);
+Route::get('/school/edit/{id}',[SchoolController::class,'edit']);
+Route::put('/school/update/{id}',[SchoolController::class,'update']);
+Route::get('/school/show/{id}',[SchoolController::class,'show']);
+Route::delete('/school/del/{id}',[SchoolController::class,'destroy']);
