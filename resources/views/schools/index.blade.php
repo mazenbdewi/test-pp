@@ -71,4 +71,5 @@
 </div>
 
 @endif
+{!! $schools->links()!!}
 @endsection
