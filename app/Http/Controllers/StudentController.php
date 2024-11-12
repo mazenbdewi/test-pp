@@ -51,8 +51,8 @@ class StudentController extends Controller
     {
      
         $student = Student::findOrFail($id);  
-      //  $student->update($request->all()); 
-         $student->update($request->validated());   
+       $student->update($request->all()); 
+        // $student->update($request->validated());   
         return redirect()->route('students.index')->with('success', 'Student updated successfully.');
     }
     
