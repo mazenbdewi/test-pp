@@ -46,9 +46,9 @@
                             <td>{{ $student->specialization }}</td>
                             <td>{{ $student->overall_grade }}</td>
                             <td>
-                                <a href="{{ route('students.show', $student) }}" class="view-button">View</a>
-                                <a href="{{ route('students.edit', $student) }}" class="edit-button">Edit</a>
-                                <form action="{{ route('students.destroy', $student) }}" method="POST" style="display:inline;">
+                                <a href="{{ route('students.show', $student->id) }}" class="view-button">View</a>
+                                <a href="{{ route('students.edit', $student->id) }}" class="edit-button">Edit</a>
+                                <form action="{{ route('students.destroy', $student->id) }}" method="POST" style="display:inline;">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="delete-button">Delete</button>
