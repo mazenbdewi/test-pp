@@ -9,8 +9,9 @@ class SchoolController extends Controller
 {
     public function index()
     {
-        $schools = School::all();
-        return view('schools.index', compact('schools'));
+        $schools = School::orderBy('name')->simplePaginate(2);
+        return view('schools.index', compact('schools'))
+		->with('i',(request()->input('page',1)-1)*2);
     }
     public function create()
     {
