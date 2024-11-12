@@ -11,10 +11,17 @@ return new class extends Migration
     {
         Schema::create('students', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('first_name')->nullable();
+            $table->string('middle_name')->nullable();
+            $table->string('last_name')->nullable();
+            $table->string('mother_name')->nullable();
             $table->string('email')->unique();
-            //$table->foreignId('course_id')->constrained()->onDelete('cascade');
             $table->integer('course_id')->nullable();
+            $table->string('address')->nullable();
+            $table->string('national_id')->unique(); 
+            $table->string('college_name')->nullable();
+            $table->string('specialization')->nullable();
+            $table->decimal('overall_grade', 5, 2)->nullable();
             $table->timestamps();
         });
     }
