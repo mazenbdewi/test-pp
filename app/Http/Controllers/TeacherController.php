@@ -3,73 +3,68 @@
 namespace App\Http\Controllers;
 
 use App\Models\Teacher;
+use App\Models\Course;
 use Illuminate\Http\Request;
 
 class TeacherController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+     
     public function index()
     {
-        $teachrs=Teacher::all();
-        return view('teachers.index',compact('teachrs'));
+   
+        $teachers = Teacher::with('courses')->get(); 
+        return view('teachers.index',compact('teachers'));
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
+ 
     public function create()
     {
-        return view('teachers.create');
+        $courses = Course::all();
+        return view('teachers.create', compact('courses'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+    
     public function store(Request $request)
     {
         $request->validate([
-            'name' => ['required','max:12'] ,
-            'age' => ['required','max:2'] ,
-            'subject_name' => ['required']
-         ]);
-         $teacher=Teacher::create($request-> all());
-         return redirect()->route('teachers.index')->with('success','Teacher added successfuly');
+            'name' => ['required', 'max:12'],
+            'age' => ['required', 'integer', 'max:99'], 
+            'courses' => ['required', 'array', 'exists:courses,id'], 
+        ]);
+    
+        $teacher = Teacher::create($request->except('courses'));   
+        $teacher->courses()->sync($request->courses); 
+        return redirect()->route('teachers.index')->with('success', 'Teacher added successfully');
     }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Teacher $teacher)
-    {
-        return view('teachers.show',compact('teacher'));
-    }
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Teacher $teacher)
-    {
-        return view('teachers.edit',compact('teacher'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
+    
     public function update(Request $request, Teacher $teacher)
     {
         $request->validate([
-            'name' => ['required','max:12'] ,
-            'age' => ['required','max:2'] ,
-            'subject_name' => ['required']
-         ]);
-         $teacher->update($request-> all());
-         return redirect()->route('teachers.index')->with('success','Updated successfuly');
+            'name' => ['required', 'max:12'],
+            'age' => ['required', 'integer', 'max:99'],
+            'courses' => ['required', 'array', 'exists:courses,id'],
+        ]);
+    
+        $teacher->update($request->except('courses'));
+        $teacher->courses()->sync($request->courses); 
+        return redirect()->route('teachers.index')->with('success', 'Updated successfully');
     }
+    
 
-    /**
-     * Remove the specified resource from storage.
-     */
+     
+    public function show(Teacher $teacher)
+    { 
+        $teacher->load('courses');  
+        return view('teachers.show', compact('teacher'));
+    }
+ 
+    public function edit($id)
+    {
+        $teacher = Teacher::with('courses')->findOrFail($id);
+        $courses = Course::all();  
+        return view('teachers.edit', compact('teacher', 'courses'));
+    }
+ 
+     
     public function destroy(Teacher $teacher)
     {
         $teacher->delete();
