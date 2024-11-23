@@ -11,7 +11,8 @@
     <title>Schools!</title>
   </head>
   <body>
-    <h1><a  href="{{ url('/school/create') }}">Create a new school</a></h1>
+    @csrf
+
 
     <!-- Optional JavaScript; choose one of the two! -->
 

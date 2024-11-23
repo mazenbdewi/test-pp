@@ -28,10 +28,16 @@
         <h1>Welcome to the Home Page</h1>
         <p>This is the home page where you can navigate to different sections.</p>
         <div>
-            <a href="{{ route('students.index') }}" class="btn btn-primary btn-custom m-2">View Students</a>
+            <a href="{{ route('students.index') }}" class="btn btn-primary btn-custom m-2">Students</a>
         </div>
         <div>
-            <a href="{{ route('teachers.index') }}" class="btn btn-secondary btn-custom m-2">Go to Teachers Page</a>
+            <a href="{{ route('teachers.index') }}" class="btn btn-secondary btn-custom m-2"  style="background: rgb(6, 17, 122)">Teachers</a>
+        </div>
+        <div>
+            <a href="{{ route('schools.index') }}" class="btn btn-info btn-custom m-2">Schools</a>
+        </div>
+        <div>
+            <a href="{{ route('cities.index') }}" class="btn btn-custom m-2" style="background: rgb(49, 51, 77) ; color:white">Cities</a>
         </div>
     </div>
 

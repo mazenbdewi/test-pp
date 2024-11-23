@@ -6,10 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Index page</title>
 </head>
-<body> 
-    
+<body>
     <div class ="container">
-
         <div class="card">
             <div class="card-body">
               <h5 class="card-title" style="color: gray">Add New Teacher</h5>
@@ -17,7 +15,14 @@
               <a class="btn btn-primary" href="{{ route('teachers.create') }}">Add</a>
             </div>
           </div>
+          @if ($message=Session::get('success'))
 
+          <!-- alert message  -->
+         <div class="alert alert-info" role="alert">
+           {{$message}}
+         </div>
+           <!-- alert message  -->
+       @endif
 
         <h4 style="margin: 15px">Teachers</h4>
         <table class="table table-striped table-dark">
@@ -31,12 +36,9 @@
               </tr>
             </thead>
             <tbody>
-                @php
-                     $i=0;
-                @endphp
-                @foreach ($teachrs as $item)
+                @foreach ($teachrs as $index=>$item)
                 <tr>
-                    <th scope="row">{{++$i}}</th>
+                    <th scope="row">{{$index+1}}</th>
                     <td>{{$item->name}}</td>
                     <td>{{$item->age}}</td>
                     <td>{{$item->subject_name}}</td>
@@ -70,3 +72,4 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 </body>
 </html>
+{!! $teachrs->links()!!}

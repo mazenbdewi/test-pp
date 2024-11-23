@@ -19,6 +19,7 @@ return new class extends Migration
 			$table->integer('capacity')->unsigned();
 			$table->longText('address');
             $table->string('photo');
+            $table->integer('city_id')->unsigned();
             $table->timestamps();
         });
     }

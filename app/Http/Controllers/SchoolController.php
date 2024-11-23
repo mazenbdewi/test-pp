@@ -3,18 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Models\School;
+use App\Models\City;
 use Illuminate\Http\Request;
+use Auth;
 
 class SchoolController extends Controller
 {
     public function index()
     {
-        $schools = School::orderBy('name')->simplePaginate(2);
+        $schools = School::orderBy('name')->simplePaginate(5);
         return view('schools.index', compact('schools'))
 		->with('i',(request()->input('page',1)-1)*2);
     }
     public function create()
     {
+        $schools=School::all();
         return view('schools.create');
     }
     public function store(Request $request)
@@ -25,7 +28,8 @@ class SchoolController extends Controller
 			'rooms_num'=>'required',
 			'capacity'=>'required',
 			'address'=>'required',
-            'photo'=>'required|image'
+            'photo'=>'required|image',
+            // 'city_id'=>'required'
         ]);
         // School::create($request->all());
         //store the photo file
@@ -39,8 +43,10 @@ class SchoolController extends Controller
 			'capacity'=> $request->capacity,
 			'address'=>$request->address,
             //store the photo path in db
-            'photo' => '/uploads/schools/'.$newPhoto
+            'photo' => '/uploads/schools/'.$newPhoto ,
+            'city_id'=>$request->city_id ?? 1,
         ]);
+
         return redirect('schools')->with('success', 'School created successfully.');
 
     }
@@ -66,7 +72,8 @@ class SchoolController extends Controller
 			'rooms_num'=>'required',
 			'capacity'=>'required',
 			'address'=>'required',
-            'photo'=>'required|image'
+            'photo'=>'required|image',
+
         ]);
         //try isset($request -> photo)
         if($request->has('photo')){
@@ -81,6 +88,7 @@ class SchoolController extends Controller
         $school->rooms_num = $request->rooms_num;
         $school->capacity = $request->capacity;
         $school->address = $request->address;
+
         //  $school->photo = $request->photo;
         $school->save();
         return redirect('schools')->with('success', 'School updated successfully.');
