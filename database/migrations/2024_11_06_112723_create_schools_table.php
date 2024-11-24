@@ -13,12 +13,11 @@ return new class extends Migration
     {
         Schema::create('schools', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+            $table->string('name')->index();
 			$table->enum('type',['primary','middle','secondary']);
-			$table->integer('rooms_num')->unsigned();
-			$table->integer('capacity')->unsigned();
 			$table->longText('address');
             $table->string('photo');
+            $table->unique(['name','type']);
             $table->timestamps();
         });
     }

@@ -29,7 +29,7 @@
         <form action="{{ route('students.update', $student) }}" method="POST">
             @csrf
             @method('PUT')
-            
+
             <label for="first_name">First Name:</label>
             <input type="text" name="first_name" value="{{ $student->first_name }}" >
 
@@ -51,7 +51,7 @@
             <label for="national_id">National ID:</label>
             <input type="text" name="national_id" value="{{ $student->national_id }}">
 
-           
+
             <label for="college_name">College Name:</label>
             <input type="text" name="college_name" value="{{ $student->college_name }}">
 
@@ -60,7 +60,14 @@
 
             <label for="overall_grade">Overall Grade:</label>
             <input type="number" step="0.01" name="overall_grade" value="{{ $student->overall_grade }}">
-
+            <div class="input-group">
+                @foreach($divisions as $item)
+                    <div class="input-group-text">
+                      <input class="form-check-input mt-0" {{($student->division_id==$item->id ? "checked" : "")}} name="division" type="radio" value={{$item->id}} aria-label="Radio button for following text input">
+                      {{$item->name}}&nbsp;
+                    </div>
+                @endforeach
+            </div>
             <button type="submit">Update Student</button>
         </form>
         <a href="{{ route('students.index') }}">Back to List</a>

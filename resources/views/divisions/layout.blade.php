@@ -6,25 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.css">
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 
     <title>Schools!</title>
   </head>
   <body>
     &nbsp; &nbsp;
-    <a href="{{ url('/') }}">Home</a> &nbsp;
-    <a href="{{ url('/schools') }}">Schools</a> &nbsp;
-    <a href="{{ url('/school/create') }}">Create a new school</a>&nbsp;
-    <a href="{{ url('/schools/divisions') }}">Divisions</a>&nbsp;
-    <a href="{{ url('/school/division/create') }}">Create a new division</a>&nbsp;
+    <a class="border border-3" href="{{ url('/schools') }}">Schools</a> &nbsp;
+    <a class="border border-3" href="{{ url('/school/create') }}">Create a new school</a>&nbsp;
+    <a class="border border-3" href="{{ url('/schools/divisions') }}">Divisions</a>&nbsp;
+    <a class="border border-3" href="{{ url('/school/division/create') }}">Create a new division</a>&nbsp;
 
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
-    {{-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script> --}}
-    {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script> --}}
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 
     <!-- Option 2: Separate Popper and Bootstrap JS -->
     <!--
@@ -36,6 +33,5 @@
     <div class="container">
         @yield("content")
     </div>
-
   </body>
 </html>

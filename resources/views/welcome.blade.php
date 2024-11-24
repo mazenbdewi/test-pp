@@ -23,7 +23,7 @@
         }
     </style>
 </head>
-<body> 
+<body>
     <div class="container">
         <h1>Welcome to the Home Page</h1>
         <p>This is the home page where you can navigate to different sections.</p>
@@ -32,6 +32,12 @@
         </div>
         <div>
             <a href="{{ route('teachers.index') }}" class="btn btn-secondary btn-custom m-2">Go to Teachers Page</a>
+        </div>
+        <div>
+            <a href="{{ route('schools.index') }}" class="btn btn-secondary btn-custom m-2">Go to Schools Page</a>
+        </div>
+        <div>
+            <a href="{{ route('divisions.index') }}" class="btn btn-secondary btn-custom m-2">Go to Divisions Page</a>
         </div>
     </div>
 

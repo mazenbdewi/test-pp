@@ -9,7 +9,10 @@ class School extends Model
 
     use HasFactory;
     protected $fillable=[
-        'name','type','rooms_num','capacity','address','photo',
+        'name','type','address','photo',
     ];
-
+    public function divisions()
+    {
+        return $this->hasMany('App\Models\Division');
+    }
 }

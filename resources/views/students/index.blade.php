@@ -8,17 +8,22 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
 <body>
+    @if ($message = Session::get('success'))
+<div class="alert alert-success" role="alert">
+    {{$message}}
+</div>
+@endif
     <div class="container">
         <h1>Students List</h1>
 
-        @if(session('success'))
+        {{-- @if(session('success'))
             <div class="alert alert-success">
                 {{ session('success') }}
             </div>
-        @endif
+        @endif --}}
 
-        <a href="{{ route('students.create') }}" class="add-student">Add New Student</a>
-        
+        {{-- <a href="{{ route('students.create') }}" class="add-student">Add New Student</a> --}}
+
         <div class="table-container">
             <table id="students-table">
                 <thead>
@@ -27,10 +32,9 @@
                         <th>Email</th>
                         <th>Course ID</th>
                         <th>Address</th>
-                        <th>National ID</th> 
-                        <th>College Name</th>
-                        <th>Specialization</th>
-                        <th>Overall Grade</th>
+                        <th>School Num</th>
+                        <th>Division Num</th>
+
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -41,10 +45,8 @@
                             <td>{{ $student->email }}</td>
                             <td>{{ $student->course_id }}</td>
                             <td>{{ $student->address }}</td>
-                            <td>{{ $student->national_id }}</td> 
-                            <td>{{ $student->college_name }}</td>
-                            <td>{{ $student->specialization }}</td>
-                            <td>{{ $student->overall_grade }}</td>
+                            <td>{{ $student->school_id }}</td>
+                            <td>{{ $student->division_id }}</td>
                             <td>
                                 <a href="{{ route('students.show', $student->id) }}" class="view-button">View</a>
                                 <a href="{{ route('students.edit', $student->id) }}" class="edit-button">Edit</a>
@@ -53,6 +55,7 @@
                                     @method('DELETE')
                                     <button type="submit" class="delete-button">Delete</button>
                                 </form>
+                                {{-- <a href="{{ url('/students/addtodivision/'.$student->id)}}" class="edit-button">Add To Div</a> --}}
                             </td>
                         </tr>
                     @endforeach
@@ -63,13 +66,13 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
-    
+
     <script>
         $(document).ready(function() {
             $('#students-table').DataTable({
                 processing: true,
-                serverSide: false, 
-                pageLength: 5,  
+                serverSide: false,
+                pageLength: 5,
             });
         });
     </script>
