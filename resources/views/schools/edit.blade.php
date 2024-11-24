@@ -34,19 +34,7 @@
             <textarea name = "name" class="form-control" rows="1">{{$school->name}}</textarea>
             </div>
           <label for="exampleFormControlSelect1">Select Type</label>
-          <select class="form-control" name="type">
-            @foreach ($typeArray as $item)
-            <option value={{$item}} {{$item===$school->type?"selected":""}}>{{$item}}</option>
-            @endforeach
-          </select>
-    <div class="form-group">
-        <label for="exampleFormControlInput1">Rooms Number</label>
-        <input name = "rooms_num" type="text" class="form-control" value={{$school->rooms_num}}>
-      </div>
-     <div class="form-group">
-        <label for="exampleFormControlInput1">Capacity</label>
-        <input name = "capacity" type="text" class="form-control" value={{$school->capacity}}>
-      </div>
+          <textarea name = "type" class="form-control" rows="1" @readonly(true)>{{$school->type}}</textarea>
       <div class="form-group">
         <label for="exampleFormControlTextarea1">School Address</label>
         <textarea name = "address" class="form-control" rows="1">{{$school->address}}</textarea>
