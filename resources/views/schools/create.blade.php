@@ -41,14 +41,6 @@
             @endforeach
           </select>
           <div class="form-group">
-            <label for="exampleFormControlTextarea1">Rooms Number</label>
-            <textarea name = "rooms_num" class="form-control" rows="1"></textarea>
-          </div>
-          <div class="form-group">
-            <label for="exampleFormControlTextarea1">School Capacity</label>
-            <textarea name = "capacity" class="form-control" rows="1"></textarea>
-          </div>
-          <div class="form-group">
             <label for="exampleFormControlTextarea1">Address</label>
             <textarea name = "address" class="form-control" rows="1"></textarea>
           </div>
