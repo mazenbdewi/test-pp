@@ -8,8 +8,8 @@
 </head>
 <body>
     <div class="container">
-        <h1>Add New Student</h1>
-        
+        <h1>Add New Student To {{$school->name}} {{$school->type}} School</h1>
+
         @if(session('success'))
             <div class="alert alert-success">
                 {{ session('success') }}
@@ -25,7 +25,7 @@
                 </ul>
             </div>
         @endif
-
+        @if (count($divisions)>0)
         <form action="{{ route('students.store') }}" method="POST">
             @csrf
             <label for="first_name">First Name:</label>
@@ -49,7 +49,7 @@
             <label for="national_id">National ID:</label>
             <input type="text" name="national_id">
 
-         
+
             <label for="college_name">College Name:</label>
             <input type="text" name="college_name">
 
@@ -58,6 +58,32 @@
 
             <label for="overall_grade">Overall Grade:</label>
             <input type="number" step="0.01" name="overall_grade">
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">School Number</label>
+                <textarea name = "school_id" class="form-control" rows="1" readonly>{{$school->id}}</textarea>
+            </div>
+
+
+
+
+
+    <div class="input-group">
+    @foreach($divisions as $item)
+        <div class="input-group-text">
+          <input class="form-check-input mt-0" name="division_id" type="radio" value={{$item->id}} aria-label="Radio button for following text input">
+          {{$item->name}}&nbsp;
+        </div>
+    @endforeach
+    </div>
+
+@else
+<div class="alert alert-warning" role="alert">
+    No Divisions
+</div>
+@endif
+
+
+
 
             <button type="submit">Add Student</button>
         </form>
