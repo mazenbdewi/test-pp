@@ -33,6 +33,9 @@
         <div>
             <a href="{{ route('teachers.index') }}" class="btn btn-secondary btn-custom m-2">Go to Teachers Page</a>
         </div>
+        <div>
+            <a href="{{ route('courses.index') }}" class="btn btn-third btn-custom m-2">View Courses</a>
+        </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
