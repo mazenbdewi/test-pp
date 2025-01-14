@@ -14,12 +14,12 @@ return new class extends Migration
         Schema::create('schools', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-			$table->enum('type',['primary','middle','secondary']);
+			$table->text('type');
 			$table->integer('rooms_num')->unsigned();
 			$table->integer('capacity')->unsigned();
 			$table->longText('address');
-            $table->string('photo');
             $table->timestamps();
+            // $table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade');
         });
     }
 

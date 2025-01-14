@@ -26,6 +26,7 @@
             <th>Capacity</th>
             <th>Rooms Number</th>
             <th>Address</th>
+            <th>City_id</th>
             <th>Delete</th>
             <th>Edit</th>
             <th>Show</th>
@@ -41,6 +42,7 @@
     <td>{{$item->capacity}}</td>
     <td>{{$item->rooms_num}}</td>
     <td>{{$item->address}}</td>
+    <td>{{$item->city_id}}</td>
 
     <td>
         <form action="{{ url('/school/del/'.$item->id) }}" method="POST">

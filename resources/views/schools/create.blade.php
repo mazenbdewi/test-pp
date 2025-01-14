@@ -52,6 +52,10 @@
             <label for="exampleFormControlTextarea1">Address</label>
             <textarea name = "address" class="form-control" rows="1"></textarea>
           </div>
+          <div class="form-group">
+            <label >City id</label>
+            <textarea name = "city_id" class="form-control" rows="1"></textarea>
+          </div>
 
     <div class="form-group">
       <label for="exampleFormControlInput1">Photo</label>

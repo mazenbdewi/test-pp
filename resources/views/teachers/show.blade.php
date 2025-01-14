@@ -8,6 +8,7 @@
 </head>
 <body> 
     <div class="container">
+      @csrf
         <p style="padding: 10px ; color:gray" > This is {{$teacher->name}}'s' info:</p>
             <div class="form-group">
               <label >{{$teacher->name}}</label>
