@@ -18,6 +18,26 @@ class StudentResource extends Resource
     protected static ?string $model = Student::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    public static function getLabel(): string
+    {
+        return __('filament.student');
+    }
+    
+    public static function getPluralLabel(): string
+    {
+         return __('filament.students');
+     }
+
+        public static function getModelLabel(): string
+        {
+            return __('filament.student');
+        }
+        
+        public static function getPluralModelLabel(): string
+          {
+        return __('filament.students');
+            }
+
 
     public static function form(Form $form): Form
     {
@@ -31,7 +51,7 @@ class StudentResource extends Resource
                 Forms\Components\Select::make('courses')
                 ->relationship('courses', 'course_name')  
                 ->multiple()  
-                ->label(__('Courses'))
+                ->label(__('filament.courses'))
                 ->required(),
  
             Forms\Components\Select::make('section_id')
@@ -49,21 +69,21 @@ class StudentResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('first_name'),
-                Tables\Columns\TextColumn::make('middle_name'),
-                Tables\Columns\TextColumn::make('last_name'),
-                Tables\Columns\TextColumn::make('mother_name'),
-                Tables\Columns\TextColumn::make('email'),
+                Tables\Columns\TextColumn::make('first_name')->label(__('filament.first_name')),
+                Tables\Columns\TextColumn::make('middle_name')->label(__('filament.middle_name')),
+                Tables\Columns\TextColumn::make('last_name')->label(__('filament.last_name')),
+                Tables\Columns\TextColumn::make('mother_name')->label(__('filament.mother_name')),
+                Tables\Columns\TextColumn::make('email')->label(__('filament.email')),
                 Tables\Columns\TextColumn::make('courses.course_name')
                 ->label(__('Courses'))
                 ->sortable()
                 ->limit(50),
-                Tables\Columns\TextColumn::make('section'),
-                Tables\Columns\TextColumn::make('address'),
-                Tables\Columns\TextColumn::make('national_id'),
-                Tables\Columns\TextColumn::make('college_name'),
-                Tables\Columns\TextColumn::make('specialization'),
-                Tables\Columns\TextColumn::make('overall_grade'),
+                Tables\Columns\TextColumn::make('section')->label(__('filament.section')),
+                Tables\Columns\TextColumn::make('address')->label(__('filament.address')),
+                Tables\Columns\TextColumn::make('national_id')->label(__('filament.national_id')),
+                Tables\Columns\TextColumn::make('college_name')->label(__('filament.college_name')),
+                Tables\Columns\TextColumn::make('specialization')->label(__('filament.specialization')),
+                Tables\Columns\TextColumn::make('overall_grade')->label(__('filament.overall_grade')),
             ])
             ->filters([
                 //

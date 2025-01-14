@@ -19,13 +19,46 @@ class SectionResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+
+
+
+    public static function getLabel(): string
+    {
+        return __('filament.section');
+    }
+    
+    public static function getPluralLabel(): string
+    {
+         return __('filament.sections');
+     }
+
+        public static function getModelLabel(): string
+        {
+            return __('filament.section');
+        }
+        
+        public static function getPluralModelLabel(): string
+          {
+        return __('filament.sections');
+            }
+
+
+
     public static function form(Form $form): Form
     {
         return $form
-            ->schema([
-                Forms\Components\TextInput::make('name'),
-                Forms\Components\TextInput::make('num_of_student'), 
-            ]);
+        ->schema([
+            Forms\Components\TextInput::make('name')
+                ->required()  
+                ->maxLength(50)   
+                ->label(__('filament.name')),  
+            
+            Forms\Components\TextInput::make('num_of_student')
+                ->numeric()  
+                ->required()   
+                ->minValue(1)  
+                ->label(__('filament.num_of_student')),   
+        ]);
     }
 
     public static function table(Table $table): Table

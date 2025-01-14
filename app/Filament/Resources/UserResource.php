@@ -21,6 +21,25 @@ class UserResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    public static function getLabel(): string
+    {
+        return __('filament.user');
+    }
+    
+    public static function getPluralLabel(): string
+    {
+         return __('filament.users');
+     }
+
+        public static function getModelLabel(): string
+        {
+            return __('filament.user');
+        }
+        
+        public static function getPluralModelLabel(): string
+          {
+        return __('filament.users');
+            }
 
 
     public static function form(Form $form): Form
@@ -29,20 +48,21 @@ class UserResource extends Resource
             ->schema([
                 Forms\Components\TextInput::make('name')
                     ->required()
-                    ->label('الاسم'),
+                    ->label(__('filament.name')),
                     Forms\Components\TextInput::make('email')
                     ->email()
                     ->required()
-                    ->label('البريد الإلكتروني'),
+                    ->label(__('filament.email')),
+                    
                
                     Forms\Components\FileUpload::make('profile_picture')
                     ->image()
                     ->directory('profile-pictures/photos')   
-                    ->label('الصورة الشخصية'),
+                    ->label(__('filament.picture')),
                 
                     Forms\Components\TextInput::make('password')
                     ->password()
-                    ->label('كلمة المرور')
+                    ->label(__('filament.password'))
                     ->dehydrateStateUsing(fn ($state) => Hash::make($state))
                     ->required(fn ($livewire) => $livewire instanceof \Filament\Resources\Pages\CreateRecord),
             ]);
@@ -52,8 +72,8 @@ class UserResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name')->label('الاسم'),
-                Tables\Columns\TextColumn::make('email')->label('البريد الإلكتروني'),
+                Tables\Columns\TextColumn::make('name')->label(__('filament.name')),
+                Tables\Columns\TextColumn::make('email')->label(__('filament.email')),
                
                 Tables\Columns\ImageColumn::make('profile_picture')
                 ->label('Photo')

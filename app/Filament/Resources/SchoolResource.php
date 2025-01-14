@@ -19,12 +19,36 @@ class SchoolResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+
+
+    public static function getLabel(): string
+    {
+        return __('filament.school');
+    }
+    
+    public static function getPluralLabel(): string
+    {
+         return __('filament.schools');
+     }
+
+        public static function getModelLabel(): string
+        {
+            return __('filament.school');
+        }
+        
+        public static function getPluralModelLabel(): string
+          {
+        return __('filament.schools');
+            }
+
+
     public static function form(Form $form): Form
     {
         return $form
         ->schema([
             Forms\Components\TextInput::make('name')
                 ->required()
+                ->maxLength(50) 
                 ->maxLength(20),
              
             Forms\Components\Select::make('type')
@@ -34,26 +58,29 @@ class SchoolResource extends Resource
                     'secondary' => 'Secondary',
                 ])
                 ->required()
-                ->label('School Type'),
+                ->label(__('filament.type')),
 
             Forms\Components\TextInput::make('rooms_num')
                 ->numeric()
                 ->required()
-                ->label('Number of Rooms'),
+                ->minValue(1) 
+                ->label(__('filament.num_of_rooms')),
 
             Forms\Components\TextInput::make('capacity')
                 ->numeric()
-                ->required()
-                ->label('Capacity'),
+                ->required() 
+                ->minValue(1) 
+                ->label(__('filament.capacity')),
 
             Forms\Components\Textarea::make('address')
                 ->required()
-                ->label('Address'),
+                ->maxLength(255)
+                ->label(__('filament.address')),
 
             Forms\Components\FileUpload::make('photo')
                 ->image()
                 ->directory('schools/photos')
-                ->label('Photo'),
+                ->label(__('filament.photo')),
         ]);
     }
 
@@ -65,7 +92,7 @@ class SchoolResource extends Resource
                 ->label('School Name'),
        
             Tables\Columns\TextColumn::make('type')
-            ->label('Type')
+            ->label(__('filament.type'))
             ->getStateUsing(function ($record) {
                  $types = [
                     'primary' => 'Primary',
@@ -77,17 +104,17 @@ class SchoolResource extends Resource
             }),
 
             Tables\Columns\TextColumn::make('rooms_num')
-                ->label('Number of Rooms'),
+                ->label(__('filament.num_of_rooms')),
 
             Tables\Columns\TextColumn::make('capacity')
-                ->label('Capacity'),
+                ->label(__('filament.capacity')),
 
             Tables\Columns\TextColumn::make('address')
-                ->label('Address')
+                ->label(__('filament.address'))
                 ->limit(50),  
 
                 Tables\Columns\ImageColumn::make('photo')
-                ->label('Photo')
+                ->label(__('filament.photo'))
                 ->getStateUsing(fn($record) => url('storage/' . $record->photo)) 
                 ->disk('public')  
                 ->width(70)       

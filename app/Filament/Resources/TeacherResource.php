@@ -18,24 +18,50 @@ class TeacherResource extends Resource
     protected static ?string $model = Teacher::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    public static function getLabel(): string
+    {
+        return __('filament.teacher');
+    }
+    
+    public static function getPluralLabel(): string
+    {
+         return __('filament.teachers');
+     }
+
+        public static function getModelLabel(): string
+        {
+            return __('filament.teacher');
+        }
+        
+        public static function getPluralModelLabel(): string
+          {
+        return __('filament.teachers');
+            }
 
     public static function form(Form $form): Form
     {
         return $form
-            ->schema([
-                Forms\Components\TextInput::make('name')->required()->maxLength(20),
-                Forms\Components\TextInput::make('age'),
+        ->schema([
+            Forms\Components\TextInput::make('name')
+                ->required()   
+                ->maxLength(20)   
+                ->label(__('filament.name')),   
             
-            
-            ]);
+            Forms\Components\TextInput::make('age')
+                ->numeric()   
+                ->required()   
+                ->minValue(0)   
+                ->maxValue(80)   
+                ->label(__('filament.age')),   
+        ]);
     }
 
     public static function table(Table $table): Table
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name'),
-                Tables\Columns\TextColumn::make('age'),
+                Tables\Columns\TextColumn::make('name')->label(__('filament.name')),
+                Tables\Columns\TextColumn::make('age')->label(__('filament.age')),
                  
                          ])
             ->filters([
