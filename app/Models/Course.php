@@ -6,9 +6,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Teacher;
 use App\Models\Section;
+use Spatie\Permission\Traits\HasRoles;
+
 use App\Models\Student;
+
 class Course extends Model
-{  use SoftDeletes;
+{  use SoftDeletes, HasRoles;
     //
     protected $fillable= [
 

@@ -20,9 +20,7 @@ class ProfileSettings extends Page
 
     protected static string $view = 'filament.resources.user-resource.pages.profile-settings';
 
-    protected static ?string $navigationIcon = 'heroicon-o-user';
-    protected static ?string $navigationLabel = 'إعدادات الملف الشخصي';
-    protected static ?string $slug = 'profile-settings';
+ 
 
     public $name;
     public $email;

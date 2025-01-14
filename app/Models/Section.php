@@ -4,9 +4,11 @@ namespace App\Models;
 use App\Models\School;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\Permission\Traits\HasRoles;
+
 
 class Section extends Model
-{  use SoftDeletes;
+{  use SoftDeletes , HasRoles ;
     protected $fillable= [
 
         'name' ,

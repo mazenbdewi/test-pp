@@ -20,9 +20,9 @@ class AdminDashboard extends Page
 
     
     protected function canView(): bool
-{
+      {
     return auth()->user()->hasRole('admin');
-}
+      }
 
 
 }

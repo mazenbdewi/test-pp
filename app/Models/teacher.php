@@ -5,11 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Course;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\Permission\Traits\HasRoles;
+
 
 
 class Teacher extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes , HasRoles ;
     protected $fillable=['name','age','course_id'];
     //public $timestamps=false;
 

@@ -97,22 +97,22 @@ class TeacherResource extends Resource
 
     public static function canViewAny(): bool
     {
-        return auth()->user()->can('view teacher');
+        return auth()->user()->can('view teachers');
     }
     
     public static function canCreate(): bool
     {
-        return auth()->user()->can('create teacher');
+        return auth()->user()->can('create teachers');
     }
     
     public static function canEdit($record): bool
     {
-        return auth()->user()->can('edit teacher');
+        return auth()->user()->can('edit teachers');
     }
     
     public static function canDelete($record): bool
     {
-        return auth()->user()->can('delete teacher');
+        return auth()->user()->can('delete teachers');
     }
 
 }

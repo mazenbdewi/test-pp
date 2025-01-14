@@ -78,7 +78,7 @@ class StudentResource extends Resource
                 ->label(__('Courses'))
                 ->sortable()
                 ->limit(50),
-                Tables\Columns\TextColumn::make('section')->label(__('filament.section')),
+                Tables\Columns\TextColumn::make('section.name')->label(__('filament.section')),
                 Tables\Columns\TextColumn::make('address')->label(__('filament.address')),
                 Tables\Columns\TextColumn::make('national_id')->label(__('filament.national_id')),
                 Tables\Columns\TextColumn::make('college_name')->label(__('filament.college_name')),

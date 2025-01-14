@@ -60,5 +60,7 @@ class RolesAndPermissionsSeeder extends Seeder
             'password' => bcrypt('teacher'),
         ]);
         $teacher->assignRole('teacher');
+
+        
 }
 }
