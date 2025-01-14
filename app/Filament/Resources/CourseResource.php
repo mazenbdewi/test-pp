@@ -60,13 +60,12 @@ class CourseResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make(__('course_name'))->required()->maxLength(20),
+                Forms\Components\TextInput::make('course_name')->required()->maxLength(20)->label(__('filament.course')),
      
             Forms\Components\Select::make('section_id')
             ->relationship('section', 'name')
             ->label(__('filament.section'))
-            ->required()
-            ->maxLength(255)
+            ->required() 
             ->rules([
                 'required',
                 'string',
