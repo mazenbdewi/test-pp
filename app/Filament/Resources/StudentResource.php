@@ -94,4 +94,26 @@ class StudentResource extends Resource
             'edit' => Pages\EditStudent::route('/{record}/edit'),
         ];
     }
+
+
+    public static function canViewAny(): bool
+    {
+        return auth()->user()->can('view students');
+    }
+    
+    public static function canCreate(): bool
+    {
+        return auth()->user()->can('create students');
+    }
+    
+    public static function canEdit($record): bool
+    {
+        return auth()->user()->can('edit students');
+    }
+    
+    public static function canDelete($record): bool
+    {
+        return auth()->user()->can('delete students');
+    }
+
 }

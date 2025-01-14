@@ -24,8 +24,7 @@ class SectionResource extends Resource
         return $form
             ->schema([
                 Forms\Components\TextInput::make('name'),
-                Forms\Components\TextInput::make('num_of_student'),
-                Forms\Components\TextInput::make('teacher_name'),
+                Forms\Components\TextInput::make('num_of_student'), 
             ]);
     }
 
@@ -35,8 +34,7 @@ class SectionResource extends Resource
             ->columns([
                 
                 Tables\Columns\TextColumn::make('name'),
-                Tables\Columns\TextColumn::make('num_of_student'),
-                Tables\Columns\TextColumn::make('teacher_name'),
+                Tables\Columns\TextColumn::make('num_of_student'), 
              
             ])
             ->filters([
@@ -68,4 +66,26 @@ class SectionResource extends Resource
             'edit' => Pages\EditSection::route('/{record}/edit'),
         ];
     }
+
+
+    public static function canViewAny(): bool
+    {
+        return auth()->user()->can('view sections');
+    }
+    
+    public static function canCreate(): bool
+    {
+        return auth()->user()->can('create sections');
+    }
+    
+    public static function canEdit($record): bool
+    {
+        return auth()->user()->can('edit sections');
+    }
+    
+    public static function canDelete($record): bool
+    {
+        return auth()->user()->can('delete sections');
+    }
+
 }

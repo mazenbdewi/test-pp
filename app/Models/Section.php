@@ -11,7 +11,7 @@ class Section extends Model
 
         'name' ,
         'num_of_student' ,
-        'teacher_name' ,
+    
         ];
     
 

@@ -62,25 +62,28 @@ class CourseResource extends Resource
             ->schema([
                 Forms\Components\TextInput::make(__('course_name'))->required()->maxLength(20),
      
-            //    Forms\Components\Select::make('section_id')  
-            //    ->options(Section::all()->pluck('name', 'id'))
-            //    ->required() ,
-            //    Forms\Components\Select::make('teacher_id')  
-            //    ->options(Teacher::all()->pluck('name', 'id'))
-            //    ->required(),
             Forms\Components\Select::make('section_id')
             ->relationship('section', 'name')
             ->label(__('filament.section'))
-            ->required(),
+            ->required()
+            ->maxLength(255)
+            ->rules([
+                'required',
+                'string',
+                'max:255',
+            ])
+            ->helperText(__('Course name must be a string and is required.')),
         
             Forms\Components\Select::make('teacher_id')
             ->relationship('teacher', 'name')
             ->label(__('filament.teacher'))
             ->required(),
+            
         
              Forms\Components\DatePicker::make('year')
              ->required()
-             ->label(__('filament.year'))
+             ->label(__('filament.year')) 
+             ->required()
              ->format('Y-m-d')
              ->reactive(),
 
@@ -128,4 +131,25 @@ class CourseResource extends Resource
             'edit' => Pages\EditCourse::route('/{record}/edit'),
         ];
     }
+
+public static function canViewAny(): bool
+{
+    return auth()->user()->can('view courses');
+}
+
+public static function canCreate(): bool
+{
+    return auth()->user()->can('create courses');
+}
+
+public static function canEdit($record): bool
+{
+    return auth()->user()->can('edit courses');
+}
+
+public static function canDelete($record): bool
+{
+    return auth()->user()->can('delete courses');
+}
+
 }

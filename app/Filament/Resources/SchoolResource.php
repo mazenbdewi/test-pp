@@ -63,14 +63,7 @@ class SchoolResource extends Resource
         ->columns([
             Tables\Columns\TextColumn::make('name')
                 ->label('School Name'),
-            
-            // Tables\Columns\TextColumn::make('type')
-            //     ->label('Type')
-            //     ->enum([
-            //         'primary' => 'Primary',
-            //         'middle' => 'Middle',
-            //         'secondary' => 'Secondary',
-            //     ]),
+       
             Tables\Columns\TextColumn::make('type')
             ->label('Type')
             ->getStateUsing(function ($record) {
@@ -131,4 +124,26 @@ class SchoolResource extends Resource
             'edit' => Pages\EditSchool::route('/{record}/edit'),
         ];
     }
+
+
+
+    public static function canViewAny(): bool
+{
+    return auth()->user()->can('view school');
+}
+
+public static function canCreate(): bool
+{
+    return auth()->user()->can('create school');
+}
+
+public static function canEdit($record): bool
+{
+    return auth()->user()->can('edit school');
+}
+
+public static function canDelete($record): bool
+{
+    return auth()->user()->can('delete school');
+}
 }

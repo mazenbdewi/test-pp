@@ -25,10 +25,7 @@ class TeacherResource extends Resource
             ->schema([
                 Forms\Components\TextInput::make('name')->required()->maxLength(20),
                 Forms\Components\TextInput::make('age'),
-                // Forms\Components\Select::make('course_id')
-                // ->relationship('course', 'course_name')  
-                // ->label(__('filament.courses'))
-                // ->required(),
+            
             
             ]);
     }
@@ -39,7 +36,7 @@ class TeacherResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('name'),
                 Tables\Columns\TextColumn::make('age'),
-                // Tables\Columns\TextColumn::make('course.course_name')->label(__('filament.course')),   
+                 
                          ])
             ->filters([
                 //
@@ -70,4 +67,26 @@ class TeacherResource extends Resource
             'edit' => Pages\EditTeacher::route('/{record}/edit'),
         ];
     }
+
+
+    public static function canViewAny(): bool
+    {
+        return auth()->user()->can('view teacher');
+    }
+    
+    public static function canCreate(): bool
+    {
+        return auth()->user()->can('create teacher');
+    }
+    
+    public static function canEdit($record): bool
+    {
+        return auth()->user()->can('edit teacher');
+    }
+    
+    public static function canDelete($record): bool
+    {
+        return auth()->user()->can('delete teacher');
+    }
+
 }
