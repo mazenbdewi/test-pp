@@ -1,0 +1,19 @@
+<?php
+
+namespace App\Filament\Resources\CourseResource\Pages;
+
+use App\Filament\Resources\CourseResource;
+use Filament\Actions;
+use Filament\Resources\Pages\CreateRecord;
+
+class CreateCourse extends CreateRecord
+{
+    protected static string $resource = CourseResource::class;
+
+    // public function mount()
+    // {
+    //     if (!auth()->user()->can('edit courses')) {
+    //         abort(403, 'Unauthorized');
+    //     }
+    // }
+}

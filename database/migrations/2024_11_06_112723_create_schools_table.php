@@ -6,9 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
+  
     public function up(): void
     {
         Schema::create('schools', function (Blueprint $table) {
@@ -19,13 +17,12 @@ return new class extends Migration
 			$table->integer('capacity')->unsigned();
 			$table->longText('address');
             $table->string('photo');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
+ 
     public function down(): void
     {
         Schema::dropIfExists('schools');

@@ -16,12 +16,14 @@ return new class extends Migration
             $table->string('last_name')->nullable();
             $table->string('mother_name')->nullable();
             $table->string('email')->unique();
-            $table->integer('course_id')->nullable();
+    
+            $table->foreignId('section_id');
             $table->string('address')->nullable();
             $table->string('national_id')->unique(); 
             $table->string('college_name')->nullable();
             $table->string('specialization')->nullable();
             $table->decimal('overall_grade', 5, 2)->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
